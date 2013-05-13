@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to Birdway!</title>
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/home.css" rel="stylesheet" />
+    <link href="/lib/artDialog/skins/default.css" rel="stylesheet" />
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 请注意JS加载顺序 -->
+    <script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>
+    <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+    <script src="/js/bmap/custom/user_label.js" type="text/javascript"></script>
+    <script src="/js/bmap/lib/MapWrapper.min.js" type="text/javascript"></script>
+    <script src="/lib/headjs/head.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        head.js(
+//                {baiduapi: "http://api.map.baidu.com/api?v=1.4"},
+                {baidumap: "/js/bmap/home_bmap.js"},
+                {kissy: "/lib/kissy/kissy-min.js"},
+                {jquery: "/lib/jquery/jquery-1.7.2.min.js"},
+                {artDialog: "/lib/artDialog/artDialog.min.js"},
+                {artDplugins: "/lib/artDialog/artDialog.plugins.min.js"},
+                {ejs: "/lib/ejs/ejs_production.js"},
+                {blurjs: "/lib/blurjs/blur.min.js"},
+                {bootstrap: "/lib/bootstrap/js/bootstrap.min.js"},
+                // label is optional
+                "/js/home/index.js"
+        );
+
+        //    head.js(
+        //            "/css/historical_step.css",
+        //            "/lib/artDialog/skins/default.css",
+        //            "/lib/bootstrap/css/bootstrap.min.css"
+        //    );
+        //        head.ready(function(){
+        //            alert('ready');
+        //        });
+        //        head.ready(document, function(){
+        //            alert(document);
+        //        });
+        //        head.js("http://api.map.baidu.com/api?v=1.4","/js/map/home_bmap.js", function(){
+        //            initmap();
+        //        });
+        head.ready("baidumap", function(){
+            initmap();
+        });
+
+    </script>
+
+    <!-- <script src="/js/socket.io.min.js" type="text/javascript"></script> -->
+    <script src="/socket.io/socket.io.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var OVERLAYS = {};  //这个到底放哪里好呢，或者homp_bmap.js的顶部
+        //        var socket = io.connect('http://localhost:8088');  //不知道为什么，只要加上url就连接不上
+        var socket = io.connect();
+        socket.on('connect', function () {
+            socket.emit('uid', { uid: '123' });
+//            socket.emit('uid', prompt('What is your nickname?'));
+//            socket.on('ready', function () {
+//                console.log('Connected !');
+//                socket.emit('msg', prompt('What is your message?'));
+//            });
+        });
+        socket.on('news', function (data) {
+            console.log(data);
+        });
+        socket.on('public_points', function(datastr){
+            //格式为：{"user":{"uid":"43mk54k5kl643l", "nickname":"Zhan san", "avatar":"http://127.0.0.1/user/image/3223.png"},
+            // "point":{"lng":123.21, "lat":21.54}, "orgin": {"x":32, "y":34, "z":54}};
+            console.log('public_points:'+datastr);
+            var data = KISSY.JSON.parse(datastr);
+            var user = data.user;
+            var point = data.point;
+            var orgin = data.orgin;
+
+//            var gpspoint = KISSY.JSON.parse(data.point);
+            var bpoint = new BMap.Point(point.lng, point.lat);
+            var overlay = OVERLAYS[user.uid];
+            if(overlay == undefined){
+                BMap.Convertor.translate(bpoint, 0, function(mpoint){
+                    var userLabel = new UserLabel(user, mpoint);
+                    map.addOverlay(userLabel);
+                    OVERLAYS[user.uid] = userLabel;
+                });
+            }else{
+                BMap.Convertor.translate(bpoint, 0, function(mpoint){
+                    overlay.move(mpoint);
+                });
+            }
+        });
+    </script>
+
+</head>
+<body>
+<div id="mapdiv_id" ></div>
+<div id="map_search_id">
+    <form id="road_search_id" class="form-search">
+        <input type="text" class="span5">
+        <button type="submit" class="btn">搜索</button>
+    </form>
+</div>
+<div id="rightpanel_id">
+    <img id="avatar_id" class="img-polaroid" src="/images/notlogin_avatar.png">
+    <ul>
+        <a class="btn">旅行日志</a>
+        <a class="btn" href="/business/travelplan">旅行计划</a>
+        <a class="btn" href="/business/historicalstep">历史足迹</a>
+        <a class="btn">历史足迹</a>
+        <a class="btn">发表文章</a>
+        <a class="btn">旅游计划</a>
+        <a class="btn">历史足迹</a>
+        <a class="btn">历史足迹</a>
+    </ul>
+</div>
+<div id="console_id">
+    <div id="myself_id" class="ctrlbut"></div>
+    <div id="partner_id" class="ctrlbut"></div>
+</div>
+</body>
+</html>

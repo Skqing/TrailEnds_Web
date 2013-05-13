@@ -1,0 +1,65 @@
+@charset "utf-8";
+/**
+ * Author: DolphinBoy
+ * Email: dolphinboyo@gmail.com
+ * Date: 13-3-4
+ * Time: 下午8:21
+ * Description: 首页样式
+ */
+
+/**
+body{
+    background: url('/public/images/map_loading.gif') no-repeat center;
+    text-align: center;
+    overflow: hidden;
+}
+*/
+
+body{
+    background: url("/public/images/bg.png") repeat;
+}
+.navbar > ul{
+
+}
+
+
+.nav {
+    margin-bottom: 20px;
+    margin-left: 0;
+    list-style: none;
+}
+.nav > li {
+    float: left;
+    margin-right: 10px;
+}
+
+.nav > li > a {
+    display: block;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    background-color: #eeeeee;
+}
+
+.nav > li > a > img {
+    max-width: none;
+}
+
+.active{
+
+}
+
+#groupmenu{
+    float: right;
+    width: 180px;
+    border: 1px red dotted;
+    margin-top: 40px;
+    border-right: 2px red dotted;
+}
+
+#waterfall{
+    float: right;
+    border: 1px blue dotted;
+    margin-top: 40px;
+}

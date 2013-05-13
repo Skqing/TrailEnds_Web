@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{$title}</title>
+    <link href="/public/css/index.css" rel="stylesheet">
+    <link href="/public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>
+    <script src="/public/lib/headjs/head.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        head.js(
+//                {baiduapi: "http://api.map.baidu.com/api?v=1.4"},
+                {baidumap: '/public/lib/bmap/bmap.js'},
+                //{kissy: "/lib/kissy/kissy-min.js"},
+                {jquery: '/public/lib/jquery/jquery-1.9.0.min.js'},
+                //{artDialog: "/lib/artDialog/artDialog.min.js"},
+                //{artDplugins: "/lib/artDialog/artDialog.plugins.min.js"},
+                //{ejs: "/lib/ejs/ejs_production.js"},
+                //{blurjs: "/lib/blurjs/blur.min.js"},
+                {bootstrap: '/public/bootstrap/js/bootstrap.min.js'},
+                // label is optional
+                '/public/js/index.js'
+        );
+
+        head.ready('baidumap', function(){
+            initmap();
+        });
+    </script>
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <ul class="nav">
+        <li class="active"><a href="__URL__/index">首页</a></li>
+        <li><a href="__APP__/index">好友</a></li>
+        <li><a href="__APP__/index">其他</a></li>
+        <li><a href="__APP__/User/userinfo">用户名{$user.username}</a></li>
+        <li><a href="__APP__/System/about">关于</a></li>
+    </ul>
+</div>
+<div id="mapdiv_id"></div>
+</body>
+</html>

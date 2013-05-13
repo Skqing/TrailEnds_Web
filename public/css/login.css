@@ -1,0 +1,16 @@
+@charset "utf-8";
+/**
+ * Author: DolphinBoy
+ * Email: dolphinboyo@gmail.com
+ * Date: 13-4-4
+ * Time: 下午6:26
+ * Description: 用户登录和注册页面的样式,需要重构
+ */
+
+.login {
+    background-color: #5867bc;
+    min-height: 317px;
+    color: white;
+}
+ 
+ 

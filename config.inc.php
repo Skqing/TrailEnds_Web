@@ -39,13 +39,14 @@ return array(
 //    'DB_PREFIX'=>'think_',
 //    'DB_RW_SEPARATE'=>true,
 
-    'DB_HOST'           => 'localhost',
-    'DB_NAME'           => 'lbscontacts',
-    'DB_USER'           => 'root',
-    'DB_PWD'            => 'longxin',
-    'DB_PORT'           => '3306',
-    'DB_PREFIX'         => 'app_',
-    'DB_RW_SEPARATE'    =>true,
+//    'DB_HOST'           => 'localhost',
+//    'DB_NAME'           => 'lbscontacts',
+//    'DB_USER'           => 'root',
+//    'DB_PWD'            => 'longxin',
+//    'DB_PORT'           => '3306',
+//    'DB_PREFIX'         => 'app_',
+//    'DB_RW_SEPARATE'    =>true,
+
     //读写分离
 
     //  写的数据比较少（写的数据，也仅仅是管理员来进行操作），而读的数据 是海量的话。（读写分离）

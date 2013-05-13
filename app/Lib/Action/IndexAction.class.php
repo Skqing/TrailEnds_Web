@@ -25,7 +25,7 @@ class IndexAction extends BaseAction {
 //        echo COMMON_PATH.'<br>'; //项目的公共文件目录
 
         //$this->show('终于搞成功了，接下来打算做一个LBS通讯录...', 'utf-8');
-        $this->assign('title', '欢迎使用LBS通讯录'.' | '.C('APP_TITLENAME'));
+        $this->assign('title', '欢迎'.' | '.C('APP_TITLENAME'));
         $this->display();
         //$this->display('User:login');
         //$this->display('blue@User:login');

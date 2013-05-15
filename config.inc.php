@@ -7,6 +7,9 @@
  * Description: 全局配置参数
  */
 return array(
+    // 404跳转url
+//    'TMPL_EXCEPTION_FILE' => '404.php',
+
     //    'DB_DSN'          => 'mysql://root@localhost:3306/lbscontacts',  //数据库配置信息
     //'配置项'=>'配置值'
     //比较适合高并发，高负载......mysql可能以后在大家处理的时候是一个瓶颈

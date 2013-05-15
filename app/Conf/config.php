@@ -1,7 +1,7 @@
 <?php
 $personality_config = array(
 	//'配置项'=>'配置值'
-    //'URL_MODEL'=>1, //URL路径规则:0=PATHINFO模式（默认模式）
+    'URL_MODEL'              => 2, //URL路径规则:0=PATHINFO模式（默认模式）
     //'URL_PATHINFO_MODEL'=>2, //
     //'URL_PATHINFO_DEPR'=>'-', // 更改PATHINFO参数分隔符
 
@@ -20,7 +20,8 @@ $personality_config = array(
     'SHOW_USE_MEM'=>true,//显示内存开销
     */
 
-    'DB_DSN' => 'mysql://username:password@localhost:3306/DbName',
+//    'DB_DSN' => 'mongo://username:password@localhost:3306/DbName',
+    'DB_DSN' => 'mongo://localhost:27017/strider',
 
     //'DB_FIELDS_CACHE'=>false,  //取消数据库字段缓存
     //'TMPL_VAR_IDENTIFY'      => 'array',  //{$user.name}和{$user['name']}等效

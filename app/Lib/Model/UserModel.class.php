@@ -2,26 +2,64 @@
 /**
  * Author: DolphinBoy
  * Email: dolphinboyo@gmail.com
- * Date: 13-2-26
- * Time: 下午7:50
- * Description: 用户模型
+ * Date: 13-5-15
+ * Time: 下午9:33
+ * Description: 处理用户相关业务
  */
-class UserModel extends BaseModel {
+
+//namespace User;
+
+
+class UserModel extends MongoModel {
     protected $tableName = 'app_user';
-//    private $id;
-//    private $email;
-//    private $username;
+
     protected $fields = array(
-        'id', 'username', 'email', 'age', '_pk' => 'id', '_autoinc' => true
+        'username'
+        , 'email'
+        , 'password'
+        , 'status'
+        , 'activate'
+        , 'createtime'
+        , 'createby'
+        , 'createip'
+        , 'updatetime'
+        , 'updateby'
+        , 'updateip'
     );
     //字段映射
-    protected $_map = array(
-        // 不用写数组啦
-        //'是要在表单当中的字段写在前面'=>'是写到后面,数据表当中的真实字段写到后面',
+//    protected $_map = array(
+//        // 不用写数组啦
+//        //'是要在表单当中的字段写在前面'=>'是写到后面,数据表当中的真实字段写到后面',
+//        'username'=>'username_'
+//        , 'password'=>'password_'
+//        , 'createtime'=>'createtime_'
+//        , 'createby'=>'createby_'
+//        , 'createip'=>'createip_'
+//        , 'updatetime'=>'updatetime_'
+//        , 'updateby'=>'updateby_'
+//        , 'updateip'=>'updateip_'
+//    );
 
-//        'uname'=>'username_',
-//        'upass'=>'password_'
+    //你在create方法当来调用自动验证的话$_POST['username']
+    // 如果来判断长度的话，我是不是必须要传入一个东西进来。来进行判断。
+    //  那怎么知道对还是不对呢？  真或假
+
+    //它也是thinkphp当中的一个成员方法在create的时候，自动执行
+    //array('填充字段','填充内容','填充条件','附加规则');
+    //填充字段: 这个字段可以是表单当中的字段，也可以是数据库当中的字段。也可以是一些辅助字段
+    //填充内容,配合附加规则一同使用
+    //填充条件, 1,2,3 就是Model::MODEL_INSERT   (默认参数为新增的时候进行填充)
+    // 附加规则,  function  callback, field（用其它字段来填充），表示此处可以拿到其他字段的一个值
+    // string , 字符串来填充。这一项，是thinkphp自动完成里面的默认选项
+    protected $_auto = array(
+        array('password','md5',3,'function'),
+        array('createip','returnip',1,'callback'),
+        array('createtime','time',1,'function'),
+        array('updatetime','time',1,'function'),
+        array('updateip','returnip',1,'function'),
+
     );
+
     protected $_validate = array(
         //下面还需要再写数组。一个数组就是一条验证规则
         //array('验证字段','验证规则','错误提示','验证条件','附加规则','验证时间'),
@@ -47,47 +85,11 @@ class UserModel extends BaseModel {
         //  3 全部情况下验证			Model::MODEL_BOTH
         //
 
-        array('uname','require','用户名必填'),
-        array('uname','checklen','用户名长度过长或过短',0,'callback'),
-        array('upass','require','密码必填'),
-        array('repassword','require','重复密码必填'),
-        array('upass','repassword','两次密码不一致',0,'confirm'),
+//        array('username','require','用户名必填'),
+//        array('username','checklen','用户名长度过长或过短',0,'callback'),
+//        array('password','require','密码必填'),
+//        array('repassword','require','重复密码必填'),
+//        array('password','repassword','两次密码不一致',0,'confirm'),
 
     );
-
-    //你在create方法当来调用自动验证的话$_POST['username']
-    // 如果来判断长度的话，我是不是必须要传入一个东西进来。来进行判断。
-    //  那怎么知道对还是不对呢？  真或假
-
-    //它也是thinkphp当中的一个成员方法在create的时候，自动执行
-    //array('填充字段','填充内容','填充条件','附加规则');
-    //填充字段: 这个字段可以是表单当中的字段，也可以是数据库当中的字段。也可以是一些辅助字段
-    //填充内容,配合附加规则一同使用
-    //填充条件, 1,2,3 就是Model::MODEL_INSERT   (默认参数为新增的时候进行填充)
-    // 附加规则,  function  callback, field（用其它字段来填充），表示此处可以拿到其他字段的一个值
-    // string , 字符串来填充。这一项，是thinkphp自动完成里面的默认选项
-
-    protected $_auto=array(
-        array('password','md5',3,'function'),
-        array('createip','returnip',1,'callback'),
-        array('createtime','time',1,'function'),
-
-
-    );
-
-
-    function returnip(){
-        return $_SERVER['REMOTE_ADDR'];
-
-    }
-
-
-
-    function checklen($data){
-        if(strlen($data)>15||strlen($data)<5){
-            return false;
-        }else{
-            return true;
-        }
-    }
 }

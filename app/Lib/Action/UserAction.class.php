@@ -7,7 +7,8 @@
  * Description: 处理用户业务
  */
 class UserAction extends BaseAction {
-// 用户注册
+
+    // 用户注册
     public function signin() {
         if ($this->isGet()){
             $this->assign('title', '注册'.' | '.C('APP_TITLENAME'));
@@ -51,12 +52,13 @@ class UserAction extends BaseAction {
             $user = D('user');
             //$user->name = ;
 
-
             $this->display('Index:index');
         } else {
             $this->error('非法请求');
         }
     }
+
+
 
     /**
      * 验证用户数据

@@ -7,8 +7,10 @@
  * Description: 全局配置参数
  */
 return array(
-    // 404跳转url
-//    'TMPL_EXCEPTION_FILE' => '404.php',
+
+//    'TMPL_EXCEPTION_FILE' => './App/Tpl/Public/404.php',  // 定义404跳转模板
+//    'TMPL_EXCEPTION_FILE'    => './App/Tpl/Public/error.php', // 定义公共错误模板
+    //'DEFAULT_TIMEZONE'       => 'Asia/Shanghai', // 设置默认时区为上海
 
     //    'DB_DSN'          => 'mysql://root@localhost:3306/lbscontacts',  //数据库配置信息
     //'配置项'=>'配置值'
@@ -21,7 +23,7 @@ return array(
     //必须要在数据库服务器当中进行相应的配
     //大家可以上网自己找资料
     //数据库抽象层到底选择哪一个,不论你是选哪一个数据库连接方式，他都是使用thinkphp为你封装好的方法来执行（增，删，改，查）
-    'DB_TYPE'           => 'mysql',
+    //'DB_TYPE'           => 'mysql',
     //连接到哪台数据库服务器
     //数据信息同步
     //以后可以出相关视频
@@ -42,12 +44,12 @@ return array(
 //    'DB_PREFIX'=>'think_',
 //    'DB_RW_SEPARATE'=>true,
 
-//    'DB_HOST'           => 'localhost',
-//    'DB_NAME'           => 'lbscontacts',
-//    'DB_USER'           => 'root',
-//    'DB_PWD'            => 'longxin',
-//    'DB_PORT'           => '3306',
-//    'DB_PREFIX'         => 'app_',
+    'DB_HOST'           => 'localhost',
+    'DB_NAME'           => 'strider',
+    'DB_USER'           => 'root',
+    'DB_PWD'            => 'longxin',
+    'DB_PORT'           => '3306',
+    'DB_PREFIX'         => 'app_',
 //    'DB_RW_SEPARATE'    =>true,
 
     //读写分离

@@ -6,30 +6,21 @@ $app_config = array(
     //'URL_PATHINFO_DEPR'=>'-', // 更改PATHINFO参数分隔符
 
     //'URL_CASE_INSENSITIVE'   => true,  //不区分路径大小写
-    'APP_DEBUG'              => true,  //开启调试模式
-    'APP_STATUS'             => 'debug', //应用调试模式状态
-    //'SHOW_PAGE_TRACE'        =>true, // 显示页面Trace信息
+
+//    'ERROR_PAGE'=>'/Public/error.html' // 定义错误跳转页面URL地址
+//    'TMPL_EXCEPTION_FILE' => './App/Tpl/Public/404.php',  // 定义404跳转模板
+//    'TMPL_EXCEPTION_FILE'    => './App/Tpl/Public/error.php', // 定义公共错误模板
+    //默认错误跳转对应的模板文件
+//    'TMPL_ACTION_ERROR' => THINK_PATH . 'Tpl/dispatch_jump.tpl',
+    //默认成功跳转对应的模板文件
+//    'TMPL_ACTION_SUCCESS' => THINK_PATH . 'Tpl/dispatch_jump.tpl'
 
 
-    /*
-    'SHOW_RUN_TIME'=>true,  //运行时间显示
-    'SHOW_ADV_TIME'=>true,//显示详细的运行时间
-    'SHOW_DB_TIMES'=>true,//显示数据库的操作次数
-    'SHOW_CACHE_TIMES'=>true,//显示缓存操作次数
-    'SHOW_USE_MEM'=>true,//显示内存开销
-    */
-
-    'DB_FIELDS_CACHE'        => false,  //取消数据库字段缓存
     //'TMPL_VAR_IDENTIFY'      => 'array',  //{$user.name}和{$user['name']}等效
 
 //    'LOG_RECORD'=>true,//开启了日志记录
 //    'LOG_RECORD_LEVEL'=>array('EMERG','ALERT','ERR'),
 //redirectURL
-    'TOKEN_ON'               => true,  // 是否开启令牌验证
-    //'TOKEN_NAME'             => '__hash__',    // 令牌验证的表单隐藏字段名称
-    //'TOKEN_TYPE'             => 'md5',  //令牌哈希验证规则 默认为MD5
-    //'TOKEN_RESET'            => true,  //令牌验证出错后是否重置令牌 默认为true
-    'DB_FIELDTYPE_CHECK'     => true,  // 开启字段类型验证
 );
 
 
@@ -37,10 +28,10 @@ $web_config = array(
     'APP_NAME'               => 'Strider',     //项目名称
     'APP_TITLENAME'          => '行客',        //项目标题名称
 
-    'MESSAGE'                => 'message',     //消息变量
+//    'MESSAGE'                => 'message',     //消息变量
 
     //模版变量
-    'MESSAGE_M'              => 'message',     //全局消息模版
+//    'MESSAGE_M'              => 'message',     //全局消息模版
 );
 $global_config = include './config.inc.php';
 return array_merge($global_config,$app_config,$web_config);

@@ -8,9 +8,18 @@
  */
 return array(
 
-//    'TMPL_EXCEPTION_FILE' => './App/Tpl/Public/404.php',  // 定义404跳转模板
-//    'TMPL_EXCEPTION_FILE'    => './App/Tpl/Public/error.php', // 定义公共错误模板
     //'DEFAULT_TIMEZONE'       => 'Asia/Shanghai', // 设置默认时区为上海
+
+    'APP_DEBUG'              => true,  //开启调试模式
+    'SHOW_PAGE_TRACE'        => true, // 显示页面Trace信息
+//    'SHOW_RUN_TIME'          => true, // 运行时间显示
+//    'SHOW_ADV_TIME'          => true, // 显示详细的运行时间
+//    'SHOW_DB_TIMES'          => true, // 显示数据库查询和写入次数
+//    'SHOW_CACHE_TIMES'       => true, // 显示缓存操作次数
+//    'SHOW_USE_MEM'           => true, // 显示内存开销
+//    'SHOW_LOAD_FILE'         => true, // 显示加载文件数
+//    'SHOW_FUN_TIMES'         => true, // 显示函数调用次数
+
 
     //    'DB_DSN'          => 'mysql://root@localhost:3306/lbscontacts',  //数据库配置信息
     //'配置项'=>'配置值'
@@ -20,13 +29,6 @@ return array(
 
     //'DB_DEPLOY_TYPE'=>1,  //数据库配置模式，0为单一，1为主从
 
-    //必须要在数据库服务器当中进行相应的配
-    //大家可以上网自己找资料
-    //数据库抽象层到底选择哪一个,不论你是选哪一个数据库连接方式，他都是使用thinkphp为你封装好的方法来执行（增，删，改，查）
-    //'DB_TYPE'           => 'mysql',
-    //连接到哪台数据库服务器
-    //数据信息同步
-    //以后可以出相关视频
 
     //utf8
     // DB_CHARSET
@@ -43,7 +45,7 @@ return array(
 //    'DB_PORT'=>'3306',
 //    'DB_PREFIX'=>'think_',
 //    'DB_RW_SEPARATE'=>true,
-
+    'DB_TYPE'           => 'mysql',
     'DB_HOST'           => 'localhost',
     'DB_NAME'           => 'strider',
     'DB_USER'           => 'root',
@@ -56,10 +58,15 @@ return array(
 
     //  写的数据比较少（写的数据，也仅仅是管理员来进行操作），而读的数据 是海量的话。（读写分离）
 
-
-
+    'DB_FIELDS_CACHE'        => false,  //禁止字段缓存
 
     //暂时不说，用户登陆，用户注册，发表评论.......
 
     //后台应用？？？？
+
+    //开发模式禁止表单令牌
+    'TOKEN_ON'               => false,  // 是否开启令牌验证
+//    'TOKEN_NAME'             => '__hash__',    // 令牌验证的表单隐藏字段名称
+//    'TOKEN_TYPE'             => 'md5',  //令牌哈希验证规则 默认为MD5
+//    'TOKEN_RESET'            => true  //令牌验证出错后是否重置令牌 默认为true
 );

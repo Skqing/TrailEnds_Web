@@ -12,25 +12,25 @@ class UserAction extends BaseAction {
     public function signin() {
         if ($this->isGet()){
             $this->assign('title', '注册'.' | '.C('APP_TITLENAME'));
-            $this->display('signin');
+            $this->display('signup');
         } else if ($this->isPost()) {
             if(session('verify') != md5($_POST['verify'])) {
                 $this->error('验证码错误！');
             }
             //$this->assign('title', '欢迎使用LBS通讯录！'.' | '.C('APP_TITLENAME'));
-            if ($_POST['password'] != $_POST['repassword']) {
-                $this->assign('title', '注册'.' | '.C('APP_TITLENAME'));
-                $this->assign(C('MESSAGE'), '两次输入的密码不同！');
-                $this->display('signin');
-            }
+//            if ($_POST['password'] != $_POST['repassword']) {
+//                $this->assign('title', '注册'.' | '.C('APP_TITLENAME'));
+//                $this->assign(C('MESSAGE'), '两次输入的密码不同！');
+//                $this->display('signup');
+//            }
 
             $user = D('User');
             if ($user->create()) {
                 //$user->password = md5($user->password);
-                $useremail = $user->useremail;
+//                $useremail = $user->useremail;
                 if ($user->add()) {
                     $this->assign(C('MESSAGE'), '我们已经将一封验证邮件发送到您的邮箱，现在去查看邮箱！');
-                    $this->assign('useremail', $useremail);
+//                    $this->assign('useremail', $useremail);
                     $this->display('siginok');
                 } else {
                     $this->assign(C('MESSAGE'), '添加用户失败，请重试！');

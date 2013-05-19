@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{$title}</title>
+</head>
+<body>
+<div style="height:500px;width:960px; background:#E2E2E2; margin:97px auto;">
+    <div style="padding:80px 0 0 180px;">
+        <div style="height:55px;">
+            <img src="/images/icon_Tick.png" alt="" style="margin-bottom:-8px;"/>
+            <label style="font-size:26px;font-weight:bold;">感谢您注册个推开放平台</label>
+        </div>
+        <div style="height:75px;">
+            <label style="font-size:17px;font-weight:bold;">系统已经向您的邮箱{$email}发送了一封激活邮件，<br/>请点击邮件中的链接完成邮箱绑定，邮箱绑定后可用于找回密码、接收报表等。</label>
+        </div>
+        <div style="height:70px;color:#575757;">
+            <label>如果没有收到激活邮件：</label><br/>
+            <label>•  请检查邮件是否被误认为垃圾邮件</label><br/>
+            <label>•  或者，您可以点此<a href="/register_success.htm?type=1" style="text-decoration:underline;color:#F90;">重新发送激活邮件</a></label>
+        </div>
+        <div style="height:50px;color:#575757;">
+            <label>如果点击激活按钮不能跳转到邮箱：</label><br/>
+            <label>•  请自行登录您的邮箱点击链接</label>
+        </div>
+    </div>
+    <h2 class="underline" ></h2>
+    <div style="height:140px;line-height:140px;text-align:center;">
+        暂不激活<a href="__APP_/index.php" style="color:#00ADFF;text-decoration:underline;font-size:12px;">去首页</a>
+        <a href="{$email_site}" target="_blank;" class="registerApp" id="liveAccount" style="margin-left:100px;font-size:24px;">立即登录邮箱激活</a>
+    </div>
+</div>
+<div class="footer">
+    <div style="float:left;color:#FFF;">个信互动（北京）网络科技有限公司</div>
+    <div style="float:right;">
+        <a href="http://e.weibo.com/u/2652523681" target="_blank;" style="color:#FFF;"><img alt="" src="/images/weibo_logo.png" style="margin-bottom:-3px;margin-right:5px;">官方微博</a>
+        <span style="color:#FFF;"> ｜</span>
+        <a href="http://bbs.igetui.com" style="color:#FFF;" target="_blank;">个推论坛</a>
+    </div>
+</div>
+</body>

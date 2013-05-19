@@ -11,17 +11,17 @@
         function fleshVerify(){
             //重载验证码
             var time = new Date().getTime();
-            document.getElementById('verifyImg').src= '__APP__/Public/verifyCode/'+time;
+            document.getElementById('verifyImg').src= '__APP__/index.php/Public/verifyCode/'+time;
         }
     </script>
 </head>
 <body>
-<form action="__URL__/signin" class="form-horizontal" method="post">
+<form action="__APP__/index.php/Sign/signup" class="form-horizontal" method="post">
     <div class="login">
         <div class="control-group">
             <label class="control-label" for="inputEmail">邮箱</label>
             <div class="controls">
-                <input name="useremail" type="text" id="inputEmail" placeholder="Email">
+                <input name="email" type="text" id="inputEmail" placeholder="Email">
             </div>
         </div>
         <div class="control-group">
@@ -40,7 +40,7 @@
             <label class="control-label" for="verifyCode">验证码</label>
             <div class="controls">
                 <input name="verifycode" type="text" id="verifyCode" placeholder="VerifyCode">
-                <img id="showverifycode" class="verifycode" src="__APP__/Public/verifyCode" alt="点击换一个 ^_^">
+                <img id="showverifycode" class="verifycode" src="__APP__/index.php/Public/verifyCode" alt="点击换一个 ^_^">
             </div>
         </div>
         <div class="control-group">
@@ -56,7 +56,9 @@
         </div>
     </div>
 </form>
+<div id="message">
 
+</div>
 <script src="/public/lib/jquery/jquery-1.9.0.min.js"></script>
 <script src="/public/bootstrap/js/bootstrap.min.js"></script>
 </body>

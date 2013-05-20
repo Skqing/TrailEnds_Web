@@ -9,6 +9,18 @@
 class UserModel extends BaseModel {
     protected $tableName = 'user';
 
+    //创建数据的顺序
+//1 获取数据源（默认是POST数组）
+//2 验证数据源合法性（非数组或者对象会过滤） 失败则返回false
+//3 检查字段映射
+//4 判断提交状态（新增或者编辑  根据主键自动判断）
+//5 数据自动验证 失败则返回false
+//6 表单令牌验证 失败则返回false
+//7 表单数据赋值（过滤非法字段和字符串处理）
+//8 数据自动完成
+//9 生成数据对象（保存在内存）
+
+
     protected $fields = array(  //加上了自定义字段后，数据就无法插进数据库了，神马情况？
 //        'id'
 //        ,'email'
@@ -26,6 +38,7 @@ class UserModel extends BaseModel {
 //        , 'updateip'
 //        , '_pk' => 'id', '_autoinc' => true
     );
+
     //字段映射
     protected $_map = array(
 //        //'是要在表单当中的字段写在前面'=>'是写到后面,数据表当中的真实字段写到后面',
@@ -45,6 +58,8 @@ class UserModel extends BaseModel {
 //        , 'updateby'=>'updateby_'
 //        , 'updateip'=>'updateip_'
     );
+
+    //自动验证
     protected $_validate = array(  //这里的属性是指表单里面的属性，而不是数据库中的字段
         //下面还需要再写数组。一个数组就是一条验证规则
         //array('验证字段','验证规则','错误提示','验证条件','附加规则','验证时间'),
@@ -76,7 +91,7 @@ class UserModel extends BaseModel {
         array('email','email','邮箱格式不正确！',self::MODEL_BOTH),
         array('email','','此邮箱已被使用，请重新填写！',0,'unique',self::MODEL_BOTH), // 在新增的时候验证name字段是否唯一
         array('password','require','密码必填',self::MODEL_BOTH),
-        //array('password','checkPwdLen','密码长度过长或过短',0,'callback'),
+        //array('password','checkPwdLen','密码长度过长或过短',0,'function'),
 //        array('password','checkPwdFormat','密码格式不正确',0,'function'), // 自定义函数验证密码格式
         array('repassword','require','重复密码必填',self::MODEL_BOTH),
         array('password','repassword','两次密码不一致',0,'confirm'),
@@ -96,7 +111,7 @@ class UserModel extends BaseModel {
 
     protected $_auto = array( //注意：这里的字段名是基于数据库中的表字段的，而不是from中的属性
         array('password_','md5',self::MODEL_BOTH,'function')
-        ,array('avatat_','getAvatarUrl',self::MODEL_INSERT,'function')
+        ,array('avatat_','getAvatarUrl',self::MODEL_INSERT,'callback')
         ,array('activate_','0',self::MODEL_INSERT)
         ,array('status_','1',self::MODEL_INSERT)
 //        ,array('create_time','time',1,'function')
@@ -108,20 +123,7 @@ class UserModel extends BaseModel {
 
     );
 
-    private function getAvatarUrl() {
-//        $avatar_url = 'http://www.gravatar.com/avatar/' + md5($this->email.toLowerCase()) + '?size=48';
-        return 'avatar_url';
-    }
-
-    private function getCreateIp(){
-//        return $_SERVER['REMOTE_ADDR'];
-        return '127.0.0.1';
-    }
-
-    private function checkPwdFormat() {
-
-    }
-
+    //检查密码长度
     private function checkPwdLen($data){
         if(strlen($data) > 15 || strlen($data) < 5){
             return false;
@@ -129,4 +131,24 @@ class UserModel extends BaseModel {
             return true;
         }
     }
+
+    //检查密码格式
+    private function checkPwdFormat() {
+
+        return true;
+    }
+
+    //获取用户头像地址
+    private function getAvatarUrl() {
+//        $avatar_url = 'http://www.gravatar.com/avatar/' + md5($this->email.toLowerCase()) + '?size=48';
+        return 'avatar_url';
+    }
+
+    //获取客户端IP地址--考虑封装到父类中去
+    private function getCreateIp(){
+        return $_SERVER['REMOTE_ADDR'];
+    }
+
+
+
 }

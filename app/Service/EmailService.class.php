@@ -14,6 +14,11 @@ class EmailService {
      * @param $email
      */
     public function getEmailSite($email) {
-
+        $email_site = [];
+        foreach($email_site as $e) {
+            if ($e == $email) {
+                return $email_site[$e];
+            }
+        }
     }
 }

@@ -51,7 +51,11 @@ class SignAction extends BaseAction {
     {
         if ($this->isGet()){
             $this->assign('title', '登录'.' | '.C('APP_TITLENAME'));
-            $this->display('login');
+//            $this->display('login');
+            $this->assign('email', '32323223@qq.com');
+            $this->assign('email_site', 'http://email.qq.com');
+            $this->display('signupok');
+
         } else if ($this->isPost()) {
             $user = D('user');
             //$user->name = ;

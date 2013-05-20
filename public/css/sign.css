@@ -1,0 +1,24 @@
+@charset "utf-8";
+/**
+ * Author: DolphinBoy
+ * Email: dolphinboyo@gmail.com
+ * Date: 13-4-4
+ * Time: 下午6:26
+ * Description: 用户登录,注册,找回密码等页面的样式,需要重构
+ */
+
+.login {
+    background-color: #5867bc;
+    min-height: 317px;
+    color: white;
+}
+#signupok {
+    height: 500px;
+    width: 960px;
+    background: #E2E2E2;
+    margin: 97px auto;
+    border: 10px;
+    border-image: url('/public/images/email.png');
+    border-image-repeat: repeat;
+}
+ 

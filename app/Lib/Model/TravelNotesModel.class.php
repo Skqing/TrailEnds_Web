@@ -23,6 +23,7 @@ class TravelNotes extends BaseModel {
         ,'client_'=>'client_'
         ,'address'=>'address_'
         ,'location'=>'location_'
+        ,'createip'=>'createip_'
 
 //        ,'createip'=>'createip_'
 //        , 'updatetime'=>'updatetime_'
@@ -44,7 +45,7 @@ class TravelNotes extends BaseModel {
         ,array('createtime_','time',self::MODEL_INSERT,'function')
         ,array('createby_','getCurUserId',self::MODEL_INSERT,'callback')
         ,array('address_','getAddressByIP',self::MODEL_INSERT,'callback')
-
+        ,array('createip_','getClientIP',self::MODEL_INSERT,'callback')
     );
 
     //验证内容长度
@@ -61,10 +62,17 @@ class TravelNotes extends BaseModel {
 
     }
 
+    //得到用户客户端IP
+    private function getClientIP() {
+        return $_SERVER['REMOTE_ADDR'];
+    }
+
     //根据用户IP获取用户地址
     private function getAddressByIP() {
 
     }
+
+
 
 }
 

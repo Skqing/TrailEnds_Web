@@ -3,7 +3,9 @@ SHOW DATABASES;
 /** 创建数据库 */
 CREATE DATABASE IF NOT EXISTS strider default charset utf8 COLLATE utf8_general_ci;
 
+USE strider;
 
+-- 建立用户表
 CREATE TABLE app_user
 (
 	id_ int primary key AUTO_INCREMENT not null,
@@ -21,6 +23,7 @@ CREATE TABLE app_user
 	updateby_ int(32) not null,
 	updateip_ varchar(100) not null*/
 );
+
 CREATE TABLE app_user_info
 (
 	id_ varchar(32) primary key not null,

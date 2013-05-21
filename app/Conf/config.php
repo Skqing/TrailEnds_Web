@@ -28,7 +28,7 @@ $web_config = array(
     'APP_NAME'               => 'Strider',     //项目名称
     'APP_TITLENAME'          => '行客',        //项目标题名称
 
-//    'MESSAGE'                => 'message',     //消息变量
+    'MESSAGE'                => 'message',     //消息变量
 
     //模版变量
 //    'MESSAGE_M'              => 'message',     //全局消息模版

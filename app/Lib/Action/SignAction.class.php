@@ -18,18 +18,18 @@ class SignAction extends BaseAction {
 //                $this->display('signup');
 //            }
 
-            $user = D('User');
-            if ($user->create()) {
+            $User = D('User');
+            if ($User->create()) {
 //                echo $_POST['email'].'<br>';
 //                echo $_POST['password'].'<br>';
 //                echo $_POST['repassword'].'<br>';
 //                echo $_POST['verifycode'].'<br>';
 //                $user->email = $_POST['email'];
-                if (false !== $user->add()) {
+                if (false !== $User->add()) {
 //                    $msg = '用户注册成功，我们已经将一封验证邮件发送到您的邮箱，现在去查看邮箱！';
-                    $email_site = $this->getEmailSite($user->email);
+                    $email_site = $this->getEmailSite($User->email);
 
-                    $this->assign('email',$user->email);
+                    $this->assign('email',$User->email);
                     $this->assign('email_site','value1');
                     $this->success('用户注册成功','signupok');
 
@@ -39,7 +39,7 @@ class SignAction extends BaseAction {
                     $this->display('signup');
                 }
             } else {
-                $this->error($user->getError());
+                $this->error($User->getError());
             }
         } else {
             $this->error('非法请求');
@@ -51,16 +51,36 @@ class SignAction extends BaseAction {
     {
         if ($this->isGet()){
             $this->assign('title', '登录'.' | '.C('APP_TITLENAME'));
-//            $this->display('login');
-            $this->assign('email', '32323223@qq.com');
-            $this->assign('email_site', 'http://email.qq.com');
-            $this->display('signupok');
+            $this->display('login');
+//            $this->assign('email', '32323223@qq.com');
+//            $this->assign('email_site', 'http://email.qq.com');
+//            $this->display('signupok');
 
         } else if ($this->isPost()) {
-            $user = D('user');
-            //$user->name = ;
+            $User = D('User');
+            $email = $_POST['email'];
+            $pwd = $_POST['password'];
 
-            $this->display('Index:index');
+            if (strlen($email) == 0 ) {
+                $this->assign(C('MESSAGE'), 'Email地址不能为空!');
+                $this->display('login');
+            }
+            if (strlen($pwd) == 0) {
+                $this->assign(C('MESSAGE'), '密码不能为空!');
+                $this->display('login');
+            }
+
+            $condition['email'] = $email;
+            $condition['password'] = md5($pwd);
+
+            $user_tmp = $User->where($condition)->select();
+
+            if ($user_tmp) {
+                $this->display('Index:index');
+            } else {
+                $this->assign(C('MESSAGE'), 'Email或密码不对!');
+                $this->display('login');
+            }
         } else {
             $this->error('非法请求');
         }

@@ -111,6 +111,7 @@ class UserModel extends BaseModel {
 
     protected $_auto = array( //注意：这里的字段名是基于数据库中的表字段的，而不是from中的属性
         array('password_','md5',self::MODEL_BOTH,'function')
+        ,array('nickname_','getNickName',self::MODEL_INSERT,'callback')
         ,array('avatat_','getAvatarUrl',self::MODEL_INSERT,'callback')
         ,array('activate_','0',self::MODEL_INSERT)
         ,array('status_','1',self::MODEL_INSERT)
@@ -136,6 +137,12 @@ class UserModel extends BaseModel {
     private function checkPwdFormat() {
 
         return true;
+    }
+
+    //截取邮箱的前一部分作为用户名，如果名称已存在则随机部分
+    private function getNickName() {
+
+        return 'username';
     }
 
     //获取用户头像地址

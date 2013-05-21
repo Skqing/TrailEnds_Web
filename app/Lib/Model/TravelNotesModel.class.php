@@ -19,7 +19,6 @@ class TravelNotes extends BaseModel {
         ,'keywords'=>'keywords_'
         ,'status'=>'status_'
         ,'createtime'=>'createtime_'
-        ,'createby'=>'createby_'
         ,'client_'=>'client_'
         ,'address'=>'address_'
         ,'location'=>'location_'
@@ -43,7 +42,7 @@ class TravelNotes extends BaseModel {
     protected $_auto = array(
         array('status_','1',self::MODEL_INSERT)
         ,array('createtime_','time',self::MODEL_INSERT,'function')
-        ,array('createby_','getCurUserId',self::MODEL_INSERT,'callback')
+        ,array('user_id','getCurUserId',self::MODEL_INSERT,'callback')
         ,array('address_','getAddressByIP',self::MODEL_INSERT,'callback')
         ,array('createip_','getClientIP',self::MODEL_INSERT,'callback')
     );

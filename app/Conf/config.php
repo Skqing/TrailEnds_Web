@@ -1,7 +1,7 @@
 <?php
 $app_config = array(
 	//'配置项'=>'配置值'
-    'URL_MODEL'              => 2, //URL路径规则:0=PATHINFO模式（默认模式）
+    'URL_MODEL'              => 2 //URL路径规则:0=PATHINFO模式（默认模式）
     //'URL_PATHINFO_MODEL'=>2, //
     //'URL_PATHINFO_DEPR'=>'-', // 更改PATHINFO参数分隔符
 
@@ -21,6 +21,11 @@ $app_config = array(
 //    'LOG_RECORD'=>true,//开启了日志记录
 //    'LOG_RECORD_LEVEL'=>array('EMERG','ALERT','ERR'),
 //redirectURL
+
+    ,'SESSION_AUTO_START'    => false  //初始化之后系统会自动启动session
+
+    ,'SESSION_USER'          => 'session_user'
+
 );
 
 

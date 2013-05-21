@@ -70,12 +70,40 @@ class SignAction extends BaseAction {
                 $this->display('login');
             }
 
-            $condition['email'] = $email;
-            $condition['password'] = md5($pwd);
+            $where['email_'] = $email;
+            $where['password_'] = md5($pwd);
 
-            $user_tmp = $User->where($condition)->select();
+            $user_tmp = $User->where($where)->find();
+            $user_tmp = $User->parseFieldsMap($user_tmp);  //解析映射字段
 
             if ($user_tmp) {
+                //这里要做很多操作啊。。。
+//                if (activate == 0) {
+//                    $this->assign(C('MESSAGE'), '用户未激活!');
+//                    $this->display('login');
+//                }
+//                if (status == 0) {
+//                    $this->assign(C('MESSAGE'), '此账户已被冻结，具体情况请联系[客服]!');
+//                    $this->display('login');
+//                }
+
+
+
+                // 1.重新实例化一个用户对象
+                $session_user = D('User');  //或者干脆实例化一个Object，而不是用D方法
+                $session_user->id = $user_tmp->id;
+                $session_user->nikename = $user_tmp->nikename;
+                $session_user->email = $user_tmp->email;
+                $session_user->avatat = $user_tmp->avatat;
+//                $session_user->activate = $user_tmp->activate;
+//                $session_user->status = $user_tmp->status;
+
+                // 2.记录SESSION
+                session(C('SESSION_USER'), $user_tmp);
+
+                // 3.在线用户统计
+
+
                 $this->display('Index:index');
             } else {
                 $this->assign(C('MESSAGE'), 'Email或密码不对!');

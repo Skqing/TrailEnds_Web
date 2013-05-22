@@ -61,14 +61,14 @@ class SignAction extends BaseAction {
             $email = $_POST['email'];
             $pwd = $_POST['password'];
 
-            if (strlen($email) == 0 ) {
-                $this->assign(C('MESSAGE'), 'Email地址不能为空!');
-                $this->display('login');
-            }
-            if (strlen($pwd) == 0) {
-                $this->assign(C('MESSAGE'), '密码不能为空!');
-                $this->display('login');
-            }
+//            if (strlen($email) == 0 ) {
+//                $this->assign(C('MESSAGE'), 'Email地址不能为空!');
+//                $this->display('login');
+//            }
+//            if (strlen($pwd) == 0) {
+//                $this->assign(C('MESSAGE'), '密码不能为空!');
+//                $this->display('login');
+//            }
 
             $where['email_'] = $email;
             $where['password_'] = md5($pwd);

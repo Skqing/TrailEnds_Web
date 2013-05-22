@@ -58,8 +58,8 @@ CREATE TABLE app_linkman_info
 	homepage_ varchar(100)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-
-CREATE TABLE app_travel_notes_
+-- 建立游记
+CREATE TABLE app_article
 (
 	`id_` INT PRIMARY KEY AUTO_INCREMENT NOT NULL COMMENT '主键' ,
 	`user_id` INT NOT NULL COMMENT '外键：关联user表' ,

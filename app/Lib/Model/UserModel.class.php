@@ -87,14 +87,14 @@ class UserModel extends BaseModel {
 
         //array('username','require','用户名必填'),
         //array('username','checklen','用户名长度过长或过短',0,'callback'),
-        array('verify','require','验证码必须填写！',self::MODEL_BOTH), //默认情况下用正则进行验证
-        array('email','email','邮箱格式不正确！',self::MODEL_BOTH),
-        array('email','','此邮箱已被使用，请重新填写！',0,'unique',self::MODEL_BOTH), // 在新增的时候验证name字段是否唯一
-        array('password','require','密码必填',self::MODEL_BOTH),
-        //array('password','checkPwdLen','密码长度过长或过短',0,'function'),
+        array('verify','require','验证码必须填写！'), //默认情况下用正则进行验证
+        array('email','email','邮箱格式不正确！',self::MUST_VALIDATE,'function'),
+        array('email','','此邮箱已被使用，请重新填写！',self::MUST_VALIDATE,'unique'), // 在新增的时候验证name字段是否唯一
+        array('password','require','密码必填'),
+        array('password','6,10','密码长度过长或过短',self::MUST_VALIDATE,'length'),
 //        array('password','checkPwdFormat','密码格式不正确',0,'function'), // 自定义函数验证密码格式
-        array('repassword','require','重复密码必填',self::MODEL_BOTH),
-        array('password','repassword','两次密码不一致',0,'confirm'),
+        array('repassword','require','重复密码必填'),
+        array('password','repassword','两次密码不一致',self::MUST_VALIDATE,'confirm'),
     );
 
     //你在create方法当来调用自动验证的话$_POST['username']

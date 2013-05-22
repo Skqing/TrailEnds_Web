@@ -7,8 +7,8 @@
  * Description: 旅行笔记实体类
  */
 
-class TravelNotes extends BaseModel {
-    protected $tableName = 'travel_notes';
+class ArticleModel extends BaseModel {
+    protected $tableName = 'article';
 
     //字段映射
     protected $_map = array(
@@ -32,10 +32,10 @@ class TravelNotes extends BaseModel {
 
     //自动验证
     protected $_validate = array(
-        array('title','require','游记标题必须填写！',self::MODEL_BOTH),
-        array('context','checkContextLen','游记内容长度过长或过短',self::MODEL_BOTH,'callback'),
-        array('keywords','require','标签必须选择哦！',self::MODEL_BOTH),
-        array('title','','此标题已经存在，请重新填写！',0,'unique',self::MODEL_BOTH),
+        array('title','6,10','游记标题为空或超过长度！',self::MUST_VALIDATE,'length'),
+        array('context','100,5000','游记内容长度过长或过短！',self::MUST_VALIDATE,'length'),
+        array('keywords','require','标签必须选择哦！',self::MUST_VALIDATE),
+        array('title','','此标题已经存在，请重新填写！',self::MUST_VALIDATE,'unique',self::MODEL_BOTH)
     );
 
     //自动完成
@@ -58,7 +58,8 @@ class TravelNotes extends BaseModel {
 
     //获取当前登录用户的ID
     private function getCurUserId() {
-
+        $session_user = session(C('SESSION_USER'));
+        return $session_user->id;
     }
 
     //得到用户客户端IP

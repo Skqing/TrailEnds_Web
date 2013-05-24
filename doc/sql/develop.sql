@@ -14,6 +14,8 @@ truncate table app_user;
 
 drop table app_user;
 
+select * from app_article;
+
 
 
 

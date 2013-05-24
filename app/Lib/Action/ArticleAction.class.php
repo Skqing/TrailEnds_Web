@@ -20,12 +20,15 @@ class ArticleAction extends BaseAction {
 
             $Article = D('Article');
             if ($Article->create()) {
+//                echo $_POST['title'].'<br>';
+//                echo $_POST['context'].'<br>';
+//                echo $_POST['tags'].'<br>';
+                echo '已经创建对象成功,但为什么对象为空?';
                 if (false !== $Article->add()) {
-
-
+                    $this->success('游记发表成功啦!');
                 } else {
                     $this->error('添加游记失败，请重试！');
-                    $this->display('article_add');
+                    //$this->display('article_add');
                 }
             } else {
                 $this->error($Article->getError());

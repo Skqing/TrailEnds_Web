@@ -16,7 +16,7 @@ class ArticleModel extends BaseModel {
         ,'userid'=>'user_id'
         ,'title'=>'title_'
         ,'context'=>'context_'
-        ,'keywords'=>'keywords_'
+        ,'tags'=>'tags_'
         ,'status'=>'status_'
         ,'createtime'=>'createtime_'
         ,'client_'=>'client_'
@@ -32,9 +32,9 @@ class ArticleModel extends BaseModel {
 
     //自动验证
     protected $_validate = array(
-        array('title','6,10','游记标题为空或超过长度！',self::MUST_VALIDATE,'length'),
-        array('context','100,5000','游记内容长度过长或过短！',self::MUST_VALIDATE,'length'),
-        array('keywords','require','标签必须选择哦！',self::MUST_VALIDATE),
+        //array('title','6,10','游记标题为空或超过长度！',self::MUST_VALIDATE,'length'),  //检测报错,神马情况?
+        //array('context','50,5000','游记内容长度过长或过短！',self::MUST_VALIDATE,'length'),
+        array('tags那好吧','require','标签必须选择哦！'),
         array('title','','此标题已经存在，请重新填写！',self::MUST_VALIDATE,'unique',self::MODEL_BOTH)
     );
 
@@ -48,7 +48,7 @@ class ArticleModel extends BaseModel {
     );
 
     //验证内容长度
-    private function checkContextLen($data) {
+    protected function checkContextLen($data) {
         if(strlen($data) > 15 || strlen($data) < 5){
             return false;
         }else{
@@ -57,19 +57,20 @@ class ArticleModel extends BaseModel {
     }
 
     //获取当前登录用户的ID
-    private function getCurUserId() {
+    protected function getCurUserId() {
         $session_user = session(C('SESSION_USER'));
         return $session_user->id;
     }
 
     //得到用户客户端IP
-    private function getClientIP() {
+    protected function getClientIP() {
         return $_SERVER['REMOTE_ADDR'];
     }
 
     //根据用户IP获取用户地址
-    private function getAddressByIP() {
+    protected function getAddressByIP() {
 
+        return "深圳福田区";
     }
 
 

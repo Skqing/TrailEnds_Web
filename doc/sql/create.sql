@@ -61,18 +61,18 @@ CREATE TABLE app_linkman_info
 -- 建立游记
 CREATE TABLE app_article
 (
-	`id_` INT PRIMARY KEY AUTO_INCREMENT NOT NULL COMMENT '主键' ,
-	`user_id` INT NOT NULL COMMENT '外键：关联user表' ,
-	`title_` VARCHAR(200) NOT NULL COMMENT '游记标题' ,
-	`context_` TEXT NOT NULL COMMENT '游记内容' ,
-	`keywords_` VARCHAR(100) NULL ,
-	`status_` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '状态' ,
-	`createtime_` DATETIME NOT NULL DEFAULT NOW(),
-	`client_` VARCHAR(20) NOT NULL COMMENT '客户端类型' ,
-	`address_` VARCHAR(200) NULL COMMENT '发表游记时所在的地址' ,
-	`location_` VARCHAR(100) NULL COMMENT '发表游记时的GPS信息' ,
-	`createip_` VARCHAR(100) NULL COMMENT '发表游记时的IP地址' ,
-	PRIMARY KEY (`id_`)
+	id_ INT PRIMARY KEY AUTO_INCREMENT NOT NULL COMMENT '主键' ,
+	user_id INT NOT NULL COMMENT '外键：关联user表' ,
+	title_ VARCHAR(200) NOT NULL COMMENT '游记标题' ,
+	context_ TEXT NOT NULL COMMENT '游记内容' ,
+	tags_ VARCHAR(45) NULL ,
+	keywords_ VARCHAR(45) NULL ,
+	status_ TINYINT(1) NOT NULL DEFAULT 1 COMMENT '状态' ,
+	createtime_ DATETIME NOT NULL DEFAULT NOW(),
+	client_ VARCHAR(20) NOT NULL COMMENT '客户端类型' ,
+	address_ VARCHAR(200) NULL COMMENT '发表游记时所在的地址' ,
+	location_ VARCHAR(100) NULL COMMENT '发表游记时的GPS信息' ,
+	createip_ VARCHAR(100) NULL COMMENT '发表游记时的IP地址'
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 

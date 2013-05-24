@@ -87,14 +87,14 @@ class UserModel extends BaseModel {
 
         //array('username','require','用户名必填'),
         //array('username','checklen','用户名长度过长或过短',0,'callback'),
-        array('verify','require','验证码必须填写！'), //默认情况下用正则进行验证
-        array('email','email','邮箱格式不正确！',self::MUST_VALIDATE,'function'),
-        array('email','','此邮箱已被使用，请重新填写！',self::MUST_VALIDATE,'unique'), // 在新增的时候验证name字段是否唯一
-        array('password','require','密码必填'),
-        array('password','6,10','密码长度过长或过短',self::MUST_VALIDATE,'length'),
+        array('verify','require','验证码必须填写！') //默认情况下用正则进行验证
+        ,array('email','email','邮箱格式不正确！',self::MUST_VALIDATE,'function')
+        ,array('email','','此邮箱已被使用，请重新填写！',self::MUST_VALIDATE,'unique') // 在新增的时候验证name字段是否唯一
+        ,array('password','require','密码必填')
+        //array('password','6,10','密码长度过长或过短',self::MUST_VALIDATE,'length'),
 //        array('password','checkPwdFormat','密码格式不正确',0,'function'), // 自定义函数验证密码格式
-        array('repassword','require','重复密码必填'),
-        array('password','repassword','两次密码不一致',self::MUST_VALIDATE,'confirm'),
+        ,array('repassword','require','重复密码必填')
+        //,array('repassword','password','确认密码不正确',self::EXISTS_VALIDATE,'confirm')  //***检测错误,神马情况?
     );
 
     //你在create方法当来调用自动验证的话$_POST['username']
@@ -125,7 +125,7 @@ class UserModel extends BaseModel {
     );
 
     //检查密码长度
-    private function checkPwdLen($data){
+    protected function checkPwdLen($data){
         if(strlen($data) > 15 || strlen($data) < 5){
             return false;
         }else{
@@ -134,25 +134,25 @@ class UserModel extends BaseModel {
     }
 
     //检查密码格式
-    private function checkPwdFormat() {
+    protected function checkPwdFormat() {
 
         return true;
     }
 
     //截取邮箱的前一部分作为用户名，如果名称已存在则随机部分
-    private function getNickName() {
+    protected function getNickName() {
 
         return 'username';
     }
 
     //获取用户头像地址
-    private function getAvatarUrl() {
+    protected function getAvatarUrl() {
 //        $avatar_url = 'http://www.gravatar.com/avatar/' + md5($this->email.toLowerCase()) + '?size=48';
         return 'avatar_url';
     }
 
     //获取客户端IP地址--考虑封装到父类中去
-    private function getCreateIp(){
+    protected function getCreateIp(){
         return $_SERVER['REMOTE_ADDR'];
     }
 

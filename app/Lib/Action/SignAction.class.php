@@ -27,7 +27,7 @@ class SignAction extends BaseAction {
 //                $user->email = $_POST['email'];
                 if (false !== $User->add()) {
 //                    $msg = '用户注册成功，我们已经将一封验证邮件发送到您的邮箱，现在去查看邮箱！';
-                    $email_site = $this->getEmailSite($User->email);
+//                    $email_site = $this->getEmailSite($User->email);
 
                     $this->assign('email',$User->email);
                     $this->assign('email_site','value1');

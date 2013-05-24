@@ -29,3 +29,7 @@ http://code-tech.diandian.com/post/2012-02-29/14078264
 
 MySQL参考资料：
 http://dev.mysql.com/doc/refman/5.1/zh/column-types.html
+
+###布局样式:
+扁平化样式参考:  
+[http://designmodo.com/flat/](http://designmodo.com/flat/ "flat")

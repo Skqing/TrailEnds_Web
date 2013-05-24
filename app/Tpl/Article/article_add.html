@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>д�μ�</title>
+    <title>{$title}</title>
+    <script type="text/javascript" src="/public/lib/jquery/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="/public/ueditor/editor_config.js"></script>
+    <script type="text/javascript" src="/public/ueditor/editor_all_min.js"></script>
+    <script type="text/javascript" src="/public/ueditor/uparse.js"></script>
 </head>
 <body>
+<form id="article" action="__APP__/index.php/Article/add" method="post">
+    标题:<input id="title" name="title" type="text">
+    <textarea id="note_editor" name="context"></textarea>
+    <input id="tags" name="tags" type="text" value="随便的啦">
+    <input type="submit" value="发表">
+    <input type="button" value="保存草稿">
+    <input type="reset" value="重置">
+</form>
 
 
+<script type="text/javascript">
+    $(function(){
+        //var editor = new UE.ui.Editor();
+        //editor.render("note_editor");
+        //1.2.4以后可以使用一下代码实例化编辑器
+        var editor = UE.getEditor('note_editor');
+
+        uParse('.content',{
+            'liiconpath':'/public/ueditor/themes/ueditor-list/'    //使用 '/' 开头的绝对路径
+        })
+        $(":submit").click(function() {
+            return verify(editor)
+        });
+
+    })
+    function verify(editor) {
+        var title = $("#title").val();
+        if (title == null || title == '') {
+            alert('标题要写哦!');
+            return false;
+        }
+        if (!editor.hasContents()) {
+            alert('没有内容还保存个啥啊!');
+            return false;
+        }
+        return true;
+    }
+</script>
 
 
+表情文件本地化使用说明：
+1、images目录下的所有表情文件夹复制到dialogs/emotion/images/文件夹下面
+2、修改editor_config.js文件，去掉 emotionLocalization 项的注释，值改为true。
+---------
+列表文件本地化使用说明：
+1、解压放到你的themes/文件夹下（可以按照需求放置路径）
+2、修改editor_config.js文件，修改listiconpath配置项：
+listiconpath : URL+'themes/ueditor-list/'  //如果是自己的目录，请使用  '/'开头的绝对路径
+3、在发布文章的页面，引用uparse.js，并运行 uParse 函数，传入列表路径：
+<!--
+<script type="text/javascript">
+    uParse('.content',{
+        'liiconpath':'/public/ueditor/themes/ueditor-list/'    //使用 '/' 开头的绝对路径
+    })
+</script>
+-->
 </body>
 </html>

@@ -2,19 +2,40 @@
 <html>
 <head>
     <title>{$title}</title>
-    <link href="/public/css/reset.css" rel="stylesheet">
+    <link href="/public/css/base/reset.css" rel="stylesheet">
     <link href="/public/css/index.css" rel="stylesheet">
+    <script src="/public/lib/jQuery/jquery-1.9.0.min.js" type="text/javascript"></script>
+    <script src="/public/lib/artTemplate/template.min.js" type="text/javascript"></script>
 
     <script src="/public/js/index.js" type="text/javascript"></script>
+    <script id="articles" type="text/html">
+        <ul>
+            <%for(i = 0; i < data.length; i++) {%>
+            <li>
+                <div><a href="__APP__/index.php/Picture/view/<%=data[i].id_%>" target="_blank"><img src="<%=data[i].title_%>"></a></div>
+                <div><a href="__APP__/index.php/Article/view/<%=data[i].id_%>" target="_blank"><%=data[i].title_%></a></div>
+                <div><%=data[i].context_%></div>
+            </li>
+            <%}%>
+        </ul>
+    </script>
     <script type="text/javascript">
+    $(function() {
+        $.getJSON('__APP__/index.php/Article/newTen', '{ orderby: "time" }', function(json) {
+            console.log(json);
+            var html = template.render('articles', json);
+            console.log(html);
+            $("#article_list").append(html);
+        });
 
+    });
     </script>
 </head>
 <body>
     <div class="navbar navbar-fixed-top-right">
         <ul class="nav">
             <li><a href="__APP__/index">LOGO</a></li>
-            <li><a href="__APP__/index.php/Sign/signup">注册</a></li>
+            <li><a href="__APP__/index.php/Sign/login">登录</a></li>
             <li><a href="__APP__/System/about">关于{$user.username}</a></li>
         </ul>
     </div>
@@ -27,8 +48,11 @@
             <li><a href="__APP__/System/about">关于</a></li>
         </ul>
     </div>
-<div>
-    <a href="__APP__/index.php/Article/add">发表游记</a></li>
-</div>
+    <a href="__APP__/index.php/Article/add">发图片</a>
+    <a href="__APP__/index.php/Article/add">发视频</a>
+    <a href="__APP__/index.php/Article/add">写游记</a>
+
+    <div id="article_list"></div>
+
 </body>
 </html>

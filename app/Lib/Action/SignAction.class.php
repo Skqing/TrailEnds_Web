@@ -90,19 +90,16 @@ class SignAction extends BaseAction {
 
 
                 // 1.重新实例化一个用户对象
-                $session_user = D('User');  //或者干脆实例化一个Object，而不是用D方法
-                $session_user->id = $user_tmp->id;
-                $session_user->nikename = $user_tmp->nikename;
-                $session_user->email = $user_tmp->email;
-                $session_user->avatat = $user_tmp->avatat;
-//                $session_user->activate = $user_tmp->activate;
-//                $session_user->status = $user_tmp->status;
+                $session_user = new UserModel();
+                $session_user->id = $user_tmp['id'];
+                $session_user->nickname = $user_tmp['nickname'];
+                $session_user->email = $user_tmp['email'];
+                $session_user->avatar = $user_tmp['avatar'];
 
                 // 2.记录SESSION
                 session(C('SESSION_USER'), $user_tmp);
 
                 // 3.在线用户统计
-
 
                 $this->display('Index:index');
             } else {

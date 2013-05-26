@@ -17,6 +17,7 @@ class ArticleModel extends BaseModel {
         ,'title'=>'title_'
         ,'context'=>'context_'
         ,'tags'=>'tags_'
+        ,'keywords'=>'keywords_'
         ,'status'=>'status_'
         ,'createtime'=>'createtime_'
         ,'client_'=>'client_'
@@ -34,7 +35,7 @@ class ArticleModel extends BaseModel {
     protected $_validate = array(
         //array('title','6,10','游记标题为空或超过长度！',self::MUST_VALIDATE,'length'),  //检测报错,神马情况?
         //array('context','50,5000','游记内容长度过长或过短！',self::MUST_VALIDATE,'length'),
-        array('tags那好吧','require','标签必须选择哦！'),
+        array('tags','require','标签必须选择哦！'),
         array('title','','此标题已经存在，请重新填写！',self::MUST_VALIDATE,'unique',self::MODEL_BOTH)
     );
 
@@ -47,19 +48,10 @@ class ArticleModel extends BaseModel {
         ,array('createip_','getClientIP',self::MODEL_INSERT,'callback')
     );
 
-    //验证内容长度
-    protected function checkContextLen($data) {
-        if(strlen($data) > 15 || strlen($data) < 5){
-            return false;
-        }else{
-            return true;
-        }
-    }
-
     //获取当前登录用户的ID
     protected function getCurUserId() {
         $session_user = session(C('SESSION_USER'));
-        return $session_user->id;
+        return $session_user['id'];
     }
 
     //得到用户客户端IP

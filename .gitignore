@@ -7,4 +7,5 @@
 /.idea
 /app/Runtime
 /ThinkPHP
-/public/bootstrap
+/public/ueditor
+!/public/ueditor/editor_config.js

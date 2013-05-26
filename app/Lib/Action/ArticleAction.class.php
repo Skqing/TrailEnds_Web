@@ -23,12 +23,12 @@ class ArticleAction extends BaseAction {
 //                echo $_POST['title'].'<br>';
 //                echo $_POST['context'].'<br>';
 //                echo $_POST['tags'].'<br>';
-                echo '已经创建对象成功,但为什么对象为空?';
+
                 if (false !== $Article->add()) {
                     $this->success('游记发表成功啦!');
                 } else {
                     $this->error('添加游记失败，请重试！');
-                    //$this->display('article_add');
+//                    $this->display('article_add');
                 }
             } else {
                 $this->error($Article->getError());
@@ -39,10 +39,39 @@ class ArticleAction extends BaseAction {
     }
 
     /**
+     * 删除方法
+     */
+    public function delete() {  //考虑放到父类里面去
+        $id = $_GET['id'];
+        if ($id) {
+            $Article = D("Article"); // 实例化User对象
+            $isok = $Article->where('id='.$id)->delete(); // 删除id为5的用户数据
+            if (false !== $isok) {
+                $this->success('游记删除成功!');
+            } else {
+                $this->error('游记已被删除或丢失，请重试！');
+            }
+        } else {
+            $this->error('获取参数失败，请重试！');
+        }
+    }
+
+    /**
      * 查看游记
      */
     public function view() {
 
+    }
+
+    /**
+     * 最新的十篇游记,主要用于首页显示
+     */
+    public function newTen() {
+        $Article = D("Article");
+        $list = $Article->where('status_=1')->order('createtime_')->limit(10)->select();
+        $list = $Article->parseFieldsMap($list);  //*****这里的解析字段为什么没作用呢？
+
+        $this->ajaxReturn($list,'查询成功！',C('SUCCESS'));
     }
 
 }

@@ -4,7 +4,11 @@ Strider
 基于地理位置服务的旅行服务
 
 
-后台模块:
+###前台库：
+- 基本库：[jQuery](https://jquery.com)
+- 模版引擎：[artTemplate](https://github.com/aui/artTemplate)
+
+
 
 ###参考资料:
 - MongoDB的PHP驱动:

@@ -34,6 +34,13 @@ $web_config = array(
     'APP_TITLENAME'          => '行客',        //项目标题名称
 
     'MESSAGE'                => 'message',     //消息变量
+    'AOK'                    => 'aok',
+    //AJAX返回状态值
+    'ERROR'                  => 'error',  //错误
+    'SUCCESS'                => 'success',  //成功
+    'FAILED'                 => 'failed',   //失败
+    'INFO'                   => 'info',  //消息
+    'WARN'                   => 'warn',  //警告
 
     //模版变量
 //    'MESSAGE_M'              => 'message',     //全局消息模版

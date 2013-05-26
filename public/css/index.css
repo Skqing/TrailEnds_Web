@@ -63,3 +63,8 @@ body{
     border: 1px blue dotted;
     margin-top: 40px;
 }
+
+#article_list {
+    background: lightskyblue;
+    margin-top: 10px;
+}

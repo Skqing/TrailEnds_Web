@@ -11,9 +11,9 @@
     <script id="articles" type="text/html">
         <ul>
             <%for(i = 0; i < data.length; i++) {%>
-            <li>
-                <div><a href="__APP__/index.php/Picture/view/<%=data[i].id_%>" target="_blank"><img src="<%=data[i].title_%>"></a></div>
-                <div><a href="__APP__/index.php/Article/view/<%=data[i].id_%>" target="_blank"><%=data[i].title_%></a></div>
+            <li class="articles">
+                <div><a href="__APP__/Picture/view/id/<%=data[i].id_%>" target="_blank"><img src="<%=data[i].title_%>"></a></div>
+                <div><a href="__APP__/Article/view/id/<%=data[i].id_%>" target="_blank"><%=data[i].title_%></a></div>
                 <div><%=data[i].context_%></div>
             </li>
             <%}%>
@@ -21,7 +21,7 @@
     </script>
     <script type="text/javascript">
     $(function() {
-        $.getJSON('__APP__/index.php/Article/newTen', '{ orderby: "time" }', function(json) {
+        $.getJSON('__APP__/Article/newTen', '{ orderby: "time" }', function(json) {
             console.log(json);
             var html = template.render('articles', json);
             console.log(html);
@@ -35,8 +35,8 @@
     <div class="navbar navbar-fixed-top-right">
         <ul class="nav">
             <li><a href="__APP__/index">LOGO</a></li>
-            <li><a href="__APP__/index.php/Sign/login">登录</a></li>
-            <li><a href="__APP__/System/about">关于{$user.username}</a></li>
+            <li><a href="__APP__/Sign/login">登录</a></li>
+            <li><a href="__APP__/User/about">关于{$user.username}</a></li>
         </ul>
     </div>
     <div class="navbar navbar-fixed-top-right">
@@ -45,12 +45,12 @@
             <li><a href="__APP__/index">好友</a></li>
             <li><a href="__APP__/index">其他</a></li>
             <li><a href="__APP__/User/userinfo">用户名{$user.username}</a></li>
-            <li><a href="__APP__/System/about">关于</a></li>
+            <li><a href="__APP__/Public/about">关于</a></li>
         </ul>
     </div>
-    <a href="__APP__/index.php/Article/add">发图片</a>
-    <a href="__APP__/index.php/Article/add">发视频</a>
-    <a href="__APP__/index.php/Article/add">写游记</a>
+    <a href="__APP__/Article/add">发图片</a>
+    <a href="__APP__/Article/add">发视频</a>
+    <a href="__APP__/Article/add">写游记</a>
 
     <div id="article_list"></div>
 

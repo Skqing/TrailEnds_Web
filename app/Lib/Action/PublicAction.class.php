@@ -37,4 +37,12 @@ class PublicAction extends BaseAction {
         //buildImageVerify();
         // simhei.ttf
     }
+
+    /**
+     * 关于页面
+     */
+    public function about() {
+        $this->assign('title', '关于'.' | '.C('APP_TITLENAME'));
+        $this->display('about');
+    }
 }

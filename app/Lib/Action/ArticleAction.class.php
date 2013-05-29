@@ -60,7 +60,16 @@ class ArticleAction extends BaseAction {
      * 查看游记
      */
     public function view() {
-
+        $id = $_GET['id'];
+        $Article = D("Article"); // 实例化User对象
+        $post = $Article->where('id_='.$id)->find(); // 删除id为5的用户数据
+        if (false !== $post) {
+            $this->assign('title', $post['title'].' | '.C('APP_TITLENAME'));
+            $this->assign('article', $post);
+            $this->display('article_view');
+        } else {
+            $this->error('游记已被删除或丢失，请重试！');
+        }
     }
 
     /**

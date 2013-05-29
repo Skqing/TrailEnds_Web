@@ -7,5 +7,12 @@
 /.idea
 /app/Runtime
 /ThinkPHP
-/public/ueditor
+/public/ueditor/dialogs/
+/public/ueditor/lang/
+/public/ueditor/themes/
+/public/ueditor/third-party/
+/public/ueditor/editor_all.js
+/public/ueditor/editor_all_min.js
+/public/ueditor/readme.txt
+/public/ueditor/uparse.js
 !/public/ueditor/editor_config.js

@@ -1,7 +1,7 @@
 <?php
 $app_config = array(
 	//'配置项'=>'配置值'
-    'URL_MODEL'              => 2 //URL路径规则:0=PATHINFO模式（默认模式）
+    'URL_MODEL'              => 1 //URL路径规则:1=PATHINFO模式（默认模式）
     //'URL_PATHINFO_MODEL'=>2, //
     //'URL_PATHINFO_DEPR'=>'-', // 更改PATHINFO参数分隔符
 

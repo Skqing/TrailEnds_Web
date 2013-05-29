@@ -65,6 +65,9 @@ body{
 }
 
 #article_list {
+
+}
+#article_list .articles {
     background: lightskyblue;
     margin-top: 10px;
 }

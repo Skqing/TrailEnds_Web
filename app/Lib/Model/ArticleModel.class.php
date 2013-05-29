@@ -36,7 +36,7 @@ class ArticleModel extends BaseModel {
         //array('title','6,10','游记标题为空或超过长度！',self::MUST_VALIDATE,'length'),  //检测报错,神马情况?
         //array('context','50,5000','游记内容长度过长或过短！',self::MUST_VALIDATE,'length'),
         array('tags','require','标签必须选择哦！'),
-        array('title','','此标题已经存在，请重新填写！',self::MUST_VALIDATE,'unique',self::MODEL_BOTH)
+        //array('title','','此标题已经存在，请重新填写！',self::MUST_VALIDATE,'unique',self::MODEL_BOTH)  //这个验证规则也有问题
     );
 
     //自动完成

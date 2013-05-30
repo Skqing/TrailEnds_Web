@@ -13,6 +13,7 @@ class PictureModel extends BaseModel {
     protected $_map = array(
         'id'=>'id_'
         ,'userid'=>'user_id'
+        ,'albumid'=>'album_id'
         ,'filename'=>'filename_'
         ,'title'=>'title_'
         ,'savepath'=>'savepath_'

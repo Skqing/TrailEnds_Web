@@ -23,6 +23,7 @@ class ArticleAction extends BaseAction {
 //                echo $_POST['title'].'<br>';
 //                echo $_POST['context'].'<br>';
 //                echo $_POST['tags'].'<br>';
+//                $Article['context'] = htmlspecialchars($Article['context']);
 
                 if (false !== $Article->add()) {
                     $this->success('游记发表成功啦!');
@@ -45,7 +46,7 @@ class ArticleAction extends BaseAction {
         $id = $_GET['id'];
         if ($id) {
             $Article = D("Article"); // 实例化User对象
-            $isok = $Article->where('id='.$id)->delete(); // 删除id为5的用户数据
+            $isok = $Article->where("id_=%d",array($id))->delete(); // 删除id为5的用户数据
             if (false !== $isok) {
                 $this->success('游记删除成功!');
             } else {
@@ -62,7 +63,7 @@ class ArticleAction extends BaseAction {
     public function view() {
         $id = $_GET['id'];
         $Article = D("Article"); // 实例化User对象
-        $post = $Article->where('id_='.$id)->find(); // 删除id为5的用户数据
+        $post = $Article->where("id_=%d",array($id))->find(); // 删除id为5的用户数据
         if (false !== $post) {
             $this->assign('title', $post['title'].' | '.C('APP_TITLENAME'));
             $this->assign('article', $post);
@@ -75,7 +76,7 @@ class ArticleAction extends BaseAction {
     /**
      * 最新的十篇游记,主要用于首页显示
      */
-    public function newTen() {
+    public function newTen() {  //这里其实有个问题：如何截取文本内容的一部分呢？
         $Article = D("Article");
         $list = $Article->where('status_=1')->order('createtime_')->limit(10)->select();
         $list = $Article->parseFieldsMap($list);  //*****这里的解析字段为什么没作用呢？

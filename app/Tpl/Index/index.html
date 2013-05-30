@@ -23,6 +23,12 @@
     $(function() {
         $.getJSON('__APP__/Article/newTen', '{ orderby: "time" }', function(json) {
             console.log(json);
+//            var articles = json.data;
+//            var html = '';
+//            if (articles != null && articles.length > 0) {
+//                html +=
+//            }
+            //这地方貌似不适合用模版引擎
             var html = template.render('articles', json);
             console.log(html);
             $("#article_list").append(html);

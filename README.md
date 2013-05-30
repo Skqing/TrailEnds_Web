@@ -37,3 +37,14 @@ http://dev.mysql.com/doc/refman/5.1/zh/column-types.html
 ###布局样式:
 扁平化样式参考:  
 [http://designmodo.com/flat/](http://designmodo.com/flat/ "flat")
+
+
+前端控件：
+[从UEditor编辑器中扣下来的Flash图片上传](http://www.abc3210.com/2012/js_08/UEditor-Flash-Upload.shtml)
+[jQuery上传插件Uploadify 3.2使用](http://www.abc3210.com/2012/js_09/jquery-uploadify.shtml)
+[jQuery插件Validate，好用的表单验证验证框架](http://www.abc3210.com/2012/js_12/57.shtml)
+[滚动条(下拉)加载数据插件：infinite-scroll](http://www.abc3210.com/2012/web_06/20.shtml)
+[流体布局插件:Waterfall](http://www.abc3210.com/2012/web_05/14.shtml)
+
+Nginx资料：
+[Nginx中如何限制某个IP同一时间段的访问次数](http://www.abc3210.com/2013/web_04/82.shtml)

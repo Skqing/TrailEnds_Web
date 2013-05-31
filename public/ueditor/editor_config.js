@@ -20,7 +20,7 @@
      * window.UEDITOR_HOME_URL = "/xxxx/xxxx/";
      */
     var URL;
-    var picurl = '/index.php/Picture/';
+    var rooturl = '/index.php/';
     /**
      * 此处配置写法适用于UEditor小组成员开发使用，外部部署用户请按照上述说明方式配置即可，建议保留下面两行，以兼容可在具体每个页面配置window.UEDITOR_HOME_URL的功能。
      */
@@ -37,20 +37,20 @@
         UEDITOR_HOME_URL : URL
 
         //图片上传配置区
-        ,imageUrl:picurl+"ueditor_up_pic"             //图片上传提交地址
-        ,imagePath:"/"                     //图片修正地址，引用了fixedImagePath,如有特殊需求，可自行配置
-       //,imageFieldName:"upfile"                   //图片数据的key,若此处修改，需要在后台对应文件修改对应参数
-        //,compressSide:0                            //等比压缩的基准，确定maxImageSideLength参数的参照对象。0为按照最长边，1为按照宽度，2为按照高度
-        //,maxImageSideLength:900                    //上传图片最大允许的边长，超过会自动等比缩放,不缩放就设置一个比较大的值，更多设置在image.html中
+        ,imageUrl:rooturl+"Picture/uePicUpload"           //图片上传提交地址
+        ,imagePath:"/"                                    //图片修正地址，引用了fixedImagePath,如有特殊需求，可自行配置
+       //,imageFieldName:"upfile"                         //图片数据的key,若此处修改，需要在后台对应文件修改对应参数
+        //,compressSide:0                                 //等比压缩的基准，确定maxImageSideLength参数的参照对象。0为按照最长边，1为按照宽度，2为按照高度
+        //,maxImageSideLength:900                         //上传图片最大允许的边长，超过会自动等比缩放,不缩放就设置一个比较大的值，更多设置在image.html中
 
         //涂鸦图片配置区
-        ,scrawlUrl:URL+"php/scrawlUp.php"           //涂鸦上传地址
+        ,scrawlUrl:URL+"php/scrawlUp.php"                 //涂鸦上传地址
         ,scrawlPath:URL+"php/"                            //图片修正地址，同imagePath
 
         //附件上传配置区
-        ,fileUrl:URL+"php/fileUp.php"               //附件上传提交地址
-        ,filePath:URL + "php/"                   //附件修正地址，同imagePath
-        //,fileFieldName:"upfile"                    //附件提交的表单名，若此处修改，需要在后台对应文件修改对应参数
+        ,fileUrl:rooturl+"File/fileUpload.php"            //附件上传提交地址
+        ,filePath:"/"                                     //附件修正地址，同imagePath
+        //,fileFieldName:"upfile"                         //附件提交的表单名，若此处修改，需要在后台对应文件修改对应参数
 
          //远程抓取配置区
         //,catchRemoteImageEnable:true               //是否开启远程图片抓取,默认开启

@@ -24,7 +24,7 @@ class ArticleAction extends BaseAction {
 //                echo $_POST['context'].'<br>';
 //                echo $_POST['tags'].'<br>';
 //                $Article['context'] = htmlspecialchars($Article['context']);
-
+                    $Article->user_id = 1;
                 if (false !== $Article->add()) {
                     $this->success('游记发表成功啦!');
                 } else {

@@ -33,14 +33,16 @@ $web_config = array(
     'APP_NAME'               => 'Strider',     //项目名称
     'APP_TITLENAME'          => '行客',        //项目标题名称
     'STATIC_URL'             => 'http://localhost/',  //静态文件服务器地址
-    'UPLOAD_FILE_URL'        => './upload/file/',
-    'UPLOAD_IMAGE_URL'       => './upload/image/',
-    'UPLOAD_PICTURE_URL'     => './upload/picture/',
+    'UPLOAD_URL'             => './upload/',  //文件上传
+    'FILE_UPLOAD_URL'        => './upload/file/',
+    'IMAGE_UPLOAD_URL'       => './upload/image/',
+    'PICTURE_UPLOAD_URL'     => './upload/picture/',
     'FILE_URI'               => 'upload/file/',
     'IMAGE_URI'              => 'upload/image/',
     'PICTURE_URI'            => 'upload/picture/',
 
-
+    'IMAGE_ALLOW_EXT'        => array('jpg', 'gif', 'png', 'jpeg'),  //允许上传的图片类型
+    'FILE_ALLOW_EXT'         => array('zip', 'rar', 'txt', 'doc', 'docx', 'xls', 'xlsx', 'pdf'),  //允许上传的文件类型
 
     'MESSAGE'                => 'message',     //消息变量
     'AOK'                    => 'aok',
@@ -54,6 +56,7 @@ $web_config = array(
     //模版变量
 //    'MESSAGE_M'              => 'message',     //全局消息模版
 );
+
 $global_config = include './config.inc.php';
 return array_merge($global_config,$app_config,$web_config);
 ?>

@@ -48,3 +48,6 @@ http://dev.mysql.com/doc/refman/5.1/zh/column-types.html
 
 Nginx资料：
 [Nginx中如何限制某个IP同一时间段的访问次数](http://www.abc3210.com/2013/web_04/82.shtml)
+
+
+[jQuery操作select](http://www.cnblogs.com/shanyou/archive/2011/07/11/2103422.html)

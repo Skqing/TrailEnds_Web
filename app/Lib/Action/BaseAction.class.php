@@ -29,4 +29,24 @@ class BaseAction extends Action {
     private function isLogin() {
 
     }
+
+    /**
+     * 获取当前用户
+     * @return 当前SESSION用户
+     */
+    protected function getSessionUser() {
+        return $session_user = session(C('SESSION_USER'));
+    }
+
+    /**
+     * 获取当前用户的ID
+     * @return 当前SESSION用户ID
+     */
+    protected function getSessionUserId() {
+        $session_user = session(C('SESSION_USER'));
+        if ($session_user) {
+            return $session_user['id'];
+        }
+        return null;
+    }
 }

@@ -8,6 +8,8 @@
  */
 class UserModel extends BaseModel {
     protected $tableName = 'user';
+//    protected $insertFields = array('account','password','nickname','email');
+//    protected $updateFields = array('nickname','email');
 
     //创建数据的顺序
 //1 获取数据源（默认是POST数组）

@@ -7,4 +7,6 @@ select sysdate();
 select now(), sleep(3), now();
 select sysdate(), sleep(3), sysdate();
 
+-- 查看数据库表的信息
+show table status from strider like 'app_album';
 

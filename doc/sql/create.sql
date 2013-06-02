@@ -6,7 +6,7 @@ CREATE DATABASE IF NOT EXISTS strider default charset utf8 COLLATE utf8_general_
 USE strider;
 
 -- 建立用户表
-CREATE TABLE app_user
+CREATE TABLE IF NOT EXISTS app_user
 (
 	id_ INT primary key AUTO_INCREMENT not null,
 	nickname_ varchar(50) not null,
@@ -59,7 +59,7 @@ CREATE TABLE app_linkman_info
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- 建立游记
-CREATE TABLE app_article
+CREATE TABLE IF NOT EXISTS app_article
 (
 	id_ INT PRIMARY KEY AUTO_INCREMENT NOT NULL COMMENT '主键' ,
 	user_id INT NOT NULL COMMENT '外键：关联user表' ,
@@ -75,6 +75,33 @@ CREATE TABLE app_article
 	createip_ VARCHAR(100) NULL COMMENT '发表游记时的IP地址'
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+-- 用户相册表
+CREATE TABLE IF NOT EXISTS app_album
+(
+  id_ INT PRIMARY KEY AUTO_INCREMENT NOT NULL COMMENT '主键' ,
+  user_id INT NOT NULL COMMENT '外键：用户ID' ,
+  title_ VARCHAR(60) NOT NULL COMMENT '标题' ,
+  description_ VARCHAR(400) NULL COMMENT '描述' ,
+  cover_id INT NULL COMMENT '外键：封面照片ID' ,
+  createtime_ DATETIME NOT NULL DEFAULT NOW() COMMENT '创建时间' 
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- 初始化一个默认的相册
+INSERT INTO app_album
+(user_id, title_, description_, createtime_) 
+VALUES (1, '游记配图', '用户游记文章的配图', now());
+COMMIT;
+INSERT INTO app_album
+(user_id, title_, description_, createtime_) 
+VALUES (1, '默认相册', '默认图片上传到此相册', now());
+COMMIT;
 
 EXPLAIN SELECT * FROM app_linkman_info;
+
+
+
+
+ 
+
+
 

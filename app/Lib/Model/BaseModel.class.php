@@ -8,4 +8,9 @@
  */
 class BaseModel extends Model {
 
+    //获取当前登录用户的ID
+    protected function getSessionUserId() {
+        $session_user = session(C('SESSION_USER'));
+        return $session_user['id'];
+    }
 }

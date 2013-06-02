@@ -18,6 +18,20 @@ body{
 body{
     background: url("/public/images/bg.png") repeat;
 }
+
+
+.container {
+    width: 980px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.container .slide {
+    border-radius: 5px;
+    height: 385px;
+    overflow: hidden;
+}
+
 .navbar > ul{
 
 }

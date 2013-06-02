@@ -35,7 +35,7 @@ class PictureAction extends BaseAction {
             $upload = new UploadFile();// 实例化上传类
             $upload->maxSize  = 3145728 ;// 设置附件上传大小
             $upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-            $upload->savePath =  C('UPLOAD_PICTURE_URL');  // 设置附件上传目录
+            $upload->savePath =  C('PICTURE_UPLOAD_URL');  // 设置附件上传目录
 
             if(!$upload->upload()) {// 上传错误提示错误信息
                 $this->error($upload->getErrorMsg());
@@ -47,6 +47,8 @@ class PictureAction extends BaseAction {
                 //dump($info);
                 //$info本身是一个数组,不知道ueditor的多图片上传是怎么个情况
                 $title = $_POST['pictitle'];
+                $album_id = $_POST['param1'];
+                $json['album_id'] = $album_id;
                 $json['url'] = C('PICTURE_URI').$info[0]['savename'];
                 $json['title'] = $title;
                 $json['original'] = $info[0]['name'];
@@ -67,9 +69,14 @@ class PictureAction extends BaseAction {
     /**
      * 图片上传
      */
-    public function pictureUpload() {
+    public function add() {
         if ($this->isGet()) {
             $this->assign('title', '上传照片'.' | '.C('APP_TITLENAME'));
+            $Album = D('Album');
+            $uid = $this->getSessionUserId();
+            $uid = 1;
+            $titles = $Album->where("user_id='%uid'",array($uid))->getField('id_,title_');
+            $this->assign('titles', $titles);
             $this->display('picture_add');
         } else if ($this->isPost()) {
             import('ORG.Net.UploadFile');
@@ -100,5 +107,10 @@ class PictureAction extends BaseAction {
         } else {
             $this->error('非法请求');
         }
+    }
+
+    public function uploadtest() {
+        $this->assign('title', '上传照片'.' | '.C('APP_TITLENAME'));
+        $this->display('uploadtest');
     }
 }

@@ -25,7 +25,7 @@ class PictureAction extends BaseAction {
     /**
      * 图片上传
      */
-    public function upload() {
+    public function ueditor_up_pic() {
         if ($this->isGet()) {
             $this->assign('title', '上传照片'.' | '.C('APP_TITLENAME'));
             $this->display('uploadtest');
@@ -34,7 +34,7 @@ class PictureAction extends BaseAction {
             $upload = new UploadFile();// 实例化上传类
             $upload->maxSize  = 3145728 ;// 设置附件上传大小
             $upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-            $upload->savePath =  './public/uploads/';// 设置附件上传目录
+            $upload->savePath =  C('UPLOAD_PICTURE_URL');  // 设置附件上传目录
 
             if(!$upload->upload()) {// 上传错误提示错误信息
                 $this->error($upload->getErrorMsg());
@@ -45,13 +45,13 @@ class PictureAction extends BaseAction {
 //            $uid = $session_user['id'];
                 //dump($info);
                 //$info本身是一个数组,不知道ueditor的多图片上传是怎么个情况
-                $json['url'] = $info['savepath'];
-                $json['title'] = '';
-                $json['original'] = $info['name'];
+                $title = $_POST['pictitle'];
+                $json['url'] = C('PICTURE_URI').$info[0]['savename'];
+                $json['title'] = $title;
+                $json['original'] = $info[0]['name'];
                 if ($info) {
                     $json['state'] = $this->stateMap[0];
                 }
-
 
                 $this->ajaxReturn($json);
 

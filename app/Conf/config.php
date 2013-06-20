@@ -32,6 +32,15 @@ $app_config = array(
 $web_config = array(
     'APP_NAME'               => 'Strider',     //项目名称
     'APP_TITLENAME'          => '行客',        //项目标题名称
+    'STATIC_URL'             => 'http://localhost/',  //静态文件服务器地址
+    'UPLOAD_FILE_URL'        => './upload/file/',
+    'UPLOAD_IMAGE_URL'       => './upload/image/',
+    'UPLOAD_PICTURE_URL'     => './upload/picture/',
+    'FILE_URI'               => 'upload/file/',
+    'IMAGE_URI'              => 'upload/image/',
+    'PICTURE_URI'            => 'upload/picture/',
+
+
 
     'MESSAGE'                => 'message',     //消息变量
     'AOK'                    => 'aok',
